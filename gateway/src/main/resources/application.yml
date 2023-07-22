@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: ServerOne
+          uri: http://localhost:8081
+          predicates:
+            - Path=/one/**
+        - id: ServerTwo
+          uri: http://localhost:8082
+          predicates:
+            - Path=/two/**
+          filters:
+            - SetStatus=201
